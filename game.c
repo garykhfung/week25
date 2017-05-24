@@ -340,6 +340,8 @@ void collision()
 			{
 				bulletDestroy();
 				mushroomLife[j] = mushroomLife[j] - 1;
+				if(mushroomLife[j] == 0)
+					mvprintw(yMushroom[j], xMushroom[j], " ");
 			}
 		break;
 		}
