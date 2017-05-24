@@ -223,6 +223,8 @@ void bulletDestroy()// destroy bullet when out of bound || touched monster
 {
 	bulletLife = FALSE;
 	mvprintw(yBullet, xBullet, " ");
+	yBullet = 0; 
+	xBullet = 0;
 	return;
 }
 
@@ -298,16 +300,11 @@ void collision()
 					if(((xMonster[i] == (xMushroom[j]) || xMonster[i] == (xMushroom[j]))
 						&& (yMonster[i] == yMushroom[j])) || (0 == xMonster[i] || xMonster[i] == XBoundary))
 					{
-						if(monsterIndicator[i] == 0)
-						{
-							xMonsterSpeed[i] = -xMonsterSpeed[i];
-							mvprintw(yMonster[i],xMonster[i]," ");
-							yMonster[i]++;
-							monsterIndicator[i] = 1;
-						}else{
-							xMonster[i] = xMonster[i] + xMonsterSpeed[i];
-							monsterIndicator[i] = 0;
-						}
+						xMonsterSpeed[i] = -xMonsterSpeed[i];
+						mvprintw(yMonster[i],xMonster[i]," ");
+						yMonster[i]++;
+						xMonster[i] = xMonster[i] + xMonsterSpeed[i];
+						
 						break;
 					}
 					mushroomUpdate(j);
